@@ -16,6 +16,7 @@ public class Main extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings settings) {
+        settings.setMainMenuEnabled(true);
         settings.setWidth(800);
         settings.setHeight(450);
         settings.setTitle("Pizzería");

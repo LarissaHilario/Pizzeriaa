@@ -35,5 +35,30 @@ public class Factory  implements EntityFactory{
                 .with(physics)
                 .build();
     }
+
+    @Spawns("Waiters")
+    public Entity newWaiter(SpawnData data){
+        FollowComponent followComponent = new FollowComponent();
+        followComponent.setSpeed(1);
+        return FXGL.entityBuilder(data)
+                .type(Type.WAITERS)
+                .view("mesero.png")
+                .with(followComponent)
+                .buildAndAttach();
+
+    }
+
+    @Spawns("Pizza")
+    public Entity newPizza(SpawnData data){
+        FollowComponent followComponent = new FollowComponent();
+        followComponent.setSpeed(1);
+        return FXGL.entityBuilder(data)
+                .type(Type.PIZZA)
+                .view("pizza.png")
+                .with(followComponent)
+                .buildAndAttach();
+
+    }
+
 }
 

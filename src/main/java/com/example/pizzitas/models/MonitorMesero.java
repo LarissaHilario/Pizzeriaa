@@ -42,7 +42,6 @@ public class MonitorMesero {
         if (meserosDisponibles < 7) {
             meserosDisponibles++;
         }
-
         if (colaPedidos.size() > 0) {
             notify();
         }

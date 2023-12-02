@@ -1,7 +1,9 @@
 package com.example.pizzitas.models;
 
 
+import com.almasb.fxgl.entity.Entity;
 import com.example.pizzitas.Threads.HiloCliente;
+import javafx.geometry.Point2D;
 
 import java.util.*;
 
@@ -70,7 +72,7 @@ public class MonitorRecepcionista {
 
     }
 
-    public synchronized void abandonarRestaurante(HiloCliente cliente) {
+    public synchronized void abandonarRestaurante(HiloCliente cliente, Entity client, Entity pizza) {
         mesasOcupadas--;
 
         if (mesasOcupadas < capacidadMesas) {
@@ -79,11 +81,19 @@ public class MonitorRecepcionista {
         }
 
         asignacionMesas.remove(cliente);
+        Point2D posicionLiberada = cliente.getPosicionAsignada();
+        List<Point2D> posiciones = cliente.getPosiciones();
+
+        // Realiza cualquier lógica necesaria para liberar la posición, por ejemplo:
+        posiciones.add(posicionLiberada);
         System.out.println("Cliente " + cliente.getId() + " abandonó el restaurante.");
+        client.setVisible(false);
+        pizza.setVisible(false);
     }
 
     public synchronized void entregarPizza(HiloCliente cliente) {
         System.out.println("Pizza entregada al Cliente " + cliente.getId());
+
         notify();
 
     }

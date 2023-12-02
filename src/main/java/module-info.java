@@ -3,7 +3,7 @@ module com.example.pizzitas {
     requires javafx.fxml;
 
     requires com.almasb.fxgl.all;
-
+    opens assets.textures;
     opens com.example.pizzitas to javafx.fxml;
     exports com.example.pizzitas;
     exports com.example.pizzitas.Controllers;
